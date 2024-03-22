@@ -3,7 +3,16 @@
 AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking Competition – Model Development Session
 
 
-<details><summary>Datasets Download Links</summary>
+<details><summary>Hardware Information</summary>
+
+CPU: AMD Ryzen 5 5600X 6-Core @ 12x 3.7GHz
+GPU: NVIDIA GeForce RTX 3060 Ti (8G)
+RAM: 48087MiB
+
+</details>
+
+
+<details><summary>Create Conda Environment</summary>
 
 ```bash
 $ conda create -n botsort python=3.7 -y

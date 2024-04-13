@@ -20,6 +20,8 @@ $ conda activate botsort
 
 # https://pytorch.org/get-started/locally/
 
+$ git clone https://github.com/ricky-696/AICUP_Baseline_BoT-SORT.git
+$ cd AICUP_Baseline_BoT-SORT/
 $ pip install numpy
 $ pip install -r requirements.txt
 
@@ -38,5 +40,4 @@ $ pip install faiss-gpu
 
 
 - Github Link for Baseline Model
-    - https://github.com/ricky-696/AICup_MCMOT_Baseline
-    - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT
+    - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))

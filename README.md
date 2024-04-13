@@ -39,5 +39,97 @@ $ pip install faiss-gpu
 </details>
 
 
+<details><summary>Folder Structure</summary>
+
+```bash
+MCMOT/
+    ├── AICUP_Baseline_BoT-SORT/
+    └── datasets/
+        └── train/
+```
+
+</details>
+
+
+<details><summary>Prepare ReID Dataset</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ python fast_reid/datasets/generate_AICUP_patches.py --data_path ../datasets/train
+# output: /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/fast_reid/datasets/AICUP-ReID/
+```
+
+</details>
+
+
+<details><summary>Prepare YOLOv7 Dataset</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ python yolov7/tools/AICUP_to_YOLOv7.py --AICUP_dir ../datasets/train --YOLOv7_dir datasets/AI_CUP_MCMOT_dataset/yolo
+# output: /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/datasets/AI_CUP_MCMOT_dataset/yolo
+```
+
+</details>
+
+
+<details><summary>Download Pretrained Weight</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+$ mkdir pretrained
+$ cd pretrained/
+$ wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7_training.pt
+```
+
+</details>
+
+
+<details><summary>Train the ReID Module for AICUP</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
+```
+
+</details>
+
+
+<details><summary>Fine-tune YOLOv7 for AICUP</summary>
+
+- The dataset path is configured in `yolov7/data/AICUP.yaml`.
+    ```
+    # train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+    train: /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/datasets/AI_CUP_MCMOT_dataset/yolo/train
+    val: /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/datasets/AI_CUP_MCMOT_dataset/yolo/val
+    
+    # number of classes
+    nc: 1
+    
+    # class names
+    names: [ 'car' ]
+    ```
+- The model architecture can be configured in `yolov7/cfg/training/yolov7-AICUP.yaml`.
+- Training hyperparameters are configured in `yolov7/data/hyp.scratch.custom.yaml` (default is yolov7/data/hyp.scratch.p5.yaml).
+
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+# official
+## finetune p5 models
+$ python yolov7/train.py --device 0 --batch-size 16 --epochs 50 --data yolov7/data/AICUP.yaml --img 1280 1280 --cfg yolov7/cfg/training/yolov7-AICUP.yaml --weights 'pretrained/yolov7-e6e.pt' --name yolov7-AICUP --hyp data/hyp.scratch.custom.yaml
+## finetune p6 models
+$ python yolov7/train_aux.py --device 0 --batch-size 16 --epochs 50 --data yolov7/data/AICUP.yaml --img 1280 1280 --cfg yolov7/cfg/training/yolov7-w6-AICUP.yaml --weights 'pretrained/yolov7-e6e.pt' --name yolov7-w6-AICUP --hyp data/hyp.scratch.custom.yaml
+
+$ python yolov7/train.py --device 0 --batch-size 16 --epochs 50 --data yolov7/data/AICUP.yaml --img 1280 1280 --cfg yolov7/cfg/training/yolov7-AICUP.yaml --weights 'pretrained/yolov7_training.pt' --name yolov7-AICUP --hyp data/hyp.scratch.custom.yaml
+```
+
+</details>
+
+
 - Github Link for Baseline Model
     - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))

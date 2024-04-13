@@ -82,6 +82,7 @@ $ cd AICUP_Baseline_BoT-SORT/
 $ mkdir pretrained
 $ cd pretrained/
 $ wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7_training.pt
+$ wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e_training.pt
 ```
 
 </details>
@@ -125,7 +126,7 @@ $ python yolov7/train.py --device 0 --batch-size 16 --epochs 50 --data yolov7/da
 ## finetune p6 models
 $ python yolov7/train_aux.py --device 0 --batch-size 16 --epochs 50 --data yolov7/data/AICUP.yaml --img 1280 1280 --cfg yolov7/cfg/training/yolov7-w6-AICUP.yaml --weights 'pretrained/yolov7-e6e.pt' --name yolov7-w6-AICUP --hyp data/hyp.scratch.custom.yaml
 
-$ python yolov7/train.py --device 0 --batch-size 16 --epochs 50 --data yolov7/data/AICUP.yaml --img 1280 1280 --cfg yolov7/cfg/training/yolov7-AICUP.yaml --weights 'pretrained/yolov7_training.pt' --name yolov7-AICUP --hyp data/hyp.scratch.custom.yaml
+$ python yolov7/train_aux.py --device 0 --batch-size 2 --epochs 50 --data yolov7/data/AICUP.yaml --img 1280 1280 --cfg yolov7/cfg/training/yolov7-AICUP.yaml --weights 'pretrained/yolov7-e6e_training.pt' --name yolov7-AICUP --hyp data/hyp.scratch.custom.yaml
 ```
 
 </details>

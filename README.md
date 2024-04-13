@@ -134,3 +134,8 @@ $ python yolov7/train.py --device 0 --batch-size 1 --epochs 50 --data yolov7/dat
 
 - Github Link for Baseline Model
     - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))
+
+
+### References
+
+- [What is different in P5 model and P6 model? #141](https://github.com/WongKinYiu/yolov7/issues/141)

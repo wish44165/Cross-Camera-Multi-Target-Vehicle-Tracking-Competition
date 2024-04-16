@@ -137,6 +137,36 @@ $ python yolov7/train.py --device 0 --batch-size 1 --epochs 50 --data yolov7/dat
 </details>
 
 
+<details><summary>Tracking and creating the submission file for AICUP (Demo)</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+# Track one <timestamp> with BoT-SORT(-ReID) based YOLOv7 and multi-class (We only output class: 'car').
+$ python3 tools/mc_demo_yolov7.py --weights runs/train/yolov7-AICUP/weights/best.pt --source /home/wish/pro/AICUP/MCMOT/datasets/train/images/0902_150000_151900 --device "0" --name "0902_150000_151900" --fuse-score --agnostic-nms --with-reid --fast-reid-config fast_reid/configs/AICUP/bagtricks_R50-ibn.yml --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+
+$ Track all <timestamps> in the directory, you can execute the bash file we provided.
+$ bash tools/track_all_timestamps.sh --weights runs/train/yolov7-AICUP/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+```
+
+</details>
+
+
+<details><summary>Evaluate your submission</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+# Before evaluation, you need to run tools/datasets/AICUP_to_MOT15.py to convert ground truth into submission format:
+python tools/datasets/AICUP_to_MOT15.py --AICUP_dir "your AICUP dataset path" --MOT15_dir "converted dataset directory" --imgsz "img size, (height, width)"
+
+# You can use tools/evaluate.py to evaluate your submission by the following command:
+python tools/evaluate.py --gt_dir "Path to the ground truth directory" --ts_dir "Path to the tracking result directory"
+```
+
+</details>
+
+
 - Github Link for Baseline Model
     - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))
 

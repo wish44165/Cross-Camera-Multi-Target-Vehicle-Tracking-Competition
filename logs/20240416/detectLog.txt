@@ -1,0 +1,218 @@
+(botsort) wish@wish-MS-7C94:~/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT$ bash tools/track_all_timestamps.sh --weights runs/train/yolov7-AICUP/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0902_150000_151900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0902_150000_151900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0902_150000_151900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:32<00:00, 13.55it/s]
+Results saved to runs/detect/0902_150000_151900
+Done. (212.611s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0902_190000_191900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0902_190000_191900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0902_190000_191900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:20<00:00, 14.36it/s]
+Results saved to runs/detect/0902_190000_191900
+Done. (200.593s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0903_150000_151900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0903_150000_151900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0903_150000_151900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1081/1081 [01:24<00:00, 12.82it/s]
+Results saved to runs/detect/0903_150000_151900
+Done. (84.328s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0903_190000_191900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0903_190000_191900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0903_190000_191900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2520/2520 [02:55<00:00, 14.32it/s]
+Results saved to runs/detect/0903_190000_191900
+Done. (175.998s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0924_150000_151900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0924_150000_151900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0924_150000_151900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2786/2786 [03:39<00:00, 12.68it/s]
+Results saved to runs/detect/0924_150000_151900
+Done. (219.687s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0924_190000_191900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0924_190000_191900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0924_190000_191900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2520/2520 [03:08<00:00, 13.38it/s]
+Results saved to runs/detect/0924_190000_191900
+Done. (188.334s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0925_150000_151900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0925_150000_151900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0925_150000_151900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:56<00:00, 12.18it/s]
+Results saved to runs/detect/0925_150000_151900
+Done. (236.382s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='0925_190000_191900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/0925_190000_191900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 0925_190000_191900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:32<00:00, 13.54it/s]
+Results saved to runs/detect/0925_190000_191900
+Done. (212.642s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='1015_150000_151900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/1015_150000_151900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 1015_150000_151900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:35<00:00, 13.39it/s]
+Results saved to runs/detect/1015_150000_151900
+Done. (215.090s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='1015_190000_191900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/1015_190000_191900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 1015_190000_191900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:25<00:00, 14.03it/s]
+Results saved to runs/detect/1015_190000_191900
+Done. (205.238s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='1016_150000_151900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/1016_150000_151900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 1016_150000_151900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:40<00:00, 13.08it/s]
+Results saved to runs/detect/1016_150000_151900
+Done. (220.145s)
+Namespace(ablation=False, agnostic_nms=True, appearance_thresh=0.25, aspect_ratio_thresh=1.6, augment=False, classes=None, cmc_method='sparseOptFlow', conf_thres=0.09, device='0', exist_ok=False, fast_reid_config='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', fast_reid_weights='logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth', hide_labels_name=False, img_size=1920, iou_thres=0.7, jde=False, match_thresh=0.7, min_box_area=10, mot20=True, name='1016_190000_191900', new_track_thresh=0.4, nosave=False, project='runs/detect', proximity_thresh=0.5, save_conf=False, save_txt=False, source='/home/wish/pro/AICUP/MCMOT/datasets/train/images/1016_190000_191900', trace=False, track_buffer=30, track_high_thresh=0.3, track_low_thresh=0.05, update=False, view_img=False, weights=['runs/train/yolov7-AICUP/weights/best.pt'], with_reid=True)
+YOLOv7 🚀 875df6b torch 1.13.1+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Ti, 7965.25MB)
+
+Fusing layers... 
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+RepConv.fuse_repvgg_block
+IDetect.fuse
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 321 layers, 36485356 parameters, 6194944 gradients, 103.2 GFLOPS
+Loading checkpoint from logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+Skip loading parameter 'heads.weight' to the model due to incompatible shapes: (3749, 2048) in the checkpoint but (0, 2048) in the model! You might want to double check if this is expected.
+Some model parameters or buffers are not found in the checkpoint:
+  heads.weight
+tracking 1016_190000_191900: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2880/2880 [03:26<00:00, 13.92it/s]
+Results saved to runs/detect/1016_190000_191900
+Done. (206.831s)
+(botsort) wish@wish-MS-7C94:~/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT$

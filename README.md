@@ -90,6 +90,11 @@ $ wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e_tr
 
 <details><summary>Train the ReID Module for AICUP</summary>
 
+`fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
+```
+>> line 25: IMS_PER_BATCH: 60    # 256
+```
+
 ```bash
 $ cd AICUP_Baseline_BoT-SORT/
 

@@ -1,0 +1,2780 @@
+(botsort) wish@wish-MS-7C94:~/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT$ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
+Command Line Args: Namespace(config_file='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', dist_url='tcp://127.0.0.1:50152', eval_only=False, machine_rank=0, num_gpus=1, num_machines=1, opts=['MODEL.DEVICE', 'cuda:0'], resume=False)
+[04/16 10:12:29 fastreid]: Rank of current process: 0. World size: 1
+[04/16 10:12:30 fastreid]: Environment info:
+----------------------  ---------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.7.16 (default, Jan 17 2023, 22:20:44) [GCC 11.2.0]
+numpy                   1.21.6
+fastreid                failed to import
+FASTREID_ENV_MODULE     <not set>
+PyTorch                 1.13.1+cu117 @/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 3060 Ti
+CUDA_HOME               /usr/local/cuda
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torchvision
+torchvision arch flags  sm_35, sm_50, sm_60, sm_70, sm_75, sm_80, sm_86
+cv2                     4.9.0
+----------------------  ---------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[04/16 10:12:30 fastreid]: Command line arguments: Namespace(config_file='fast_reid/configs/AICUP/bagtricks_R50-ibn.yml', dist_url='tcp://127.0.0.1:50152', eval_only=False, machine_rank=0, num_gpus=1, num_machines=1, opts=['MODEL.DEVICE', 'cuda:0'], resume=False)
+[04/16 10:12:30 fastreid]: Contents of args.config_file=fast_reid/configs/AICUP/bagtricks_R50-ibn.yml:
+_BASE_: ../Base-bagtricks.yml
+
+INPUT:
+  SIZE_TRAIN: [256, 256]
+  SIZE_TEST: [256, 256]
+
+MODEL:
+  BACKBONE:
+    WITH_IBN: True
+  HEADS:
+    POOL_LAYER: GeneralizedMeanPooling
+
+  LOSSES:
+    TRI:
+      HARD_MINING: False
+      MARGIN: 0.0
+
+DATASETS:
+  NAMES: ("AICUP",)
+  TESTS: ("AICUP",)
+
+SOLVER:
+  BIAS_LR_FACTOR: 1.
+
+  IMS_PER_BATCH: 60    # 256
+  MAX_EPOCH: 60
+  STEPS: [30, 50]
+  WARMUP_ITERS: 2000
+
+  CHECKPOINT_PERIOD: 1
+
+TEST:
+  EVAL_PERIOD: 60 # We didn't provide eval dataset
+  IMS_PER_BATCH: 256
+
+OUTPUT_DIR: logs/AICUP_115/bagtricks_R50-ibn
+
+[04/16 10:12:30 fastreid]: Running with full config:
+CUDNN_BENCHMARK: True
+DATALOADER:
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+  SAMPLER_TRAIN: NaiveIdentitySampler
+  SET_WEIGHT: []
+DATASETS:
+  COMBINEALL: False
+  NAMES: ('AICUP',)
+  TESTS: ('AICUP',)
+INPUT:
+  AFFINE:
+    ENABLED: False
+  AUGMIX:
+    ENABLED: False
+    PROB: 0.0
+  AUTOAUG:
+    ENABLED: False
+    PROB: 0.0
+  CJ:
+    BRIGHTNESS: 0.15
+    CONTRAST: 0.15
+    ENABLED: False
+    HUE: 0.1
+    PROB: 0.5
+    SATURATION: 0.1
+  CROP:
+    ENABLED: False
+    RATIO: [0.75, 1.3333333333333333]
+    SCALE: [0.16, 1]
+    SIZE: [224, 224]
+  FLIP:
+    ENABLED: True
+    PROB: 0.5
+  PADDING:
+    ENABLED: True
+    MODE: constant
+    SIZE: 10
+  REA:
+    ENABLED: True
+    PROB: 0.5
+    VALUE: [123.675, 116.28, 103.53]
+  RPT:
+    ENABLED: False
+    PROB: 0.5
+  SIZE_TEST: [256, 256]
+  SIZE_TRAIN: [256, 256]
+KD:
+  EMA:
+    ENABLED: False
+    MOMENTUM: 0.999
+  MODEL_CONFIG: []
+  MODEL_WEIGHTS: []
+MODEL:
+  BACKBONE:
+    ATT_DROP_RATE: 0.0
+    DEPTH: 50x
+    DROP_PATH_RATIO: 0.1
+    DROP_RATIO: 0.0
+    FEAT_DIM: 2048
+    LAST_STRIDE: 1
+    NAME: build_resnet_backbone
+    NORM: BN
+    PRETRAIN: True
+    PRETRAIN_PATH: 
+    SIE_COE: 3.0
+    STRIDE_SIZE: (16, 16)
+    WITH_IBN: True
+    WITH_NL: False
+    WITH_SE: False
+  DEVICE: cuda:0
+  FREEZE_LAYERS: []
+  HEADS:
+    CLS_LAYER: Linear
+    EMBEDDING_DIM: 0
+    MARGIN: 0.0
+    NAME: EmbeddingHead
+    NECK_FEAT: before
+    NORM: BN
+    NUM_CLASSES: 0
+    POOL_LAYER: GeneralizedMeanPooling
+    SCALE: 1
+    WITH_BNNECK: True
+  LOSSES:
+    CE:
+      ALPHA: 0.2
+      EPSILON: 0.1
+      SCALE: 1.0
+    CIRCLE:
+      GAMMA: 128
+      MARGIN: 0.25
+      SCALE: 1.0
+    COSFACE:
+      GAMMA: 128
+      MARGIN: 0.25
+      SCALE: 1.0
+    FL:
+      ALPHA: 0.25
+      GAMMA: 2
+      SCALE: 1.0
+    NAME: ('CrossEntropyLoss', 'TripletLoss')
+    TRI:
+      HARD_MINING: False
+      MARGIN: 0.0
+      NORM_FEAT: False
+      SCALE: 1.0
+  META_ARCHITECTURE: Baseline
+  PIXEL_MEAN: [123.675, 116.28, 103.53]
+  PIXEL_STD: [58.395, 57.120000000000005, 57.375]
+  QUEUE_SIZE: 8192
+  WEIGHTS: 
+OUTPUT_DIR: logs/AICUP_115/bagtricks_R50-ibn
+SOLVER:
+  AMP:
+    ENABLED: True
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1.0
+  CHECKPOINT_PERIOD: 1
+  CLIP_GRADIENTS:
+    CLIP_TYPE: norm
+    CLIP_VALUE: 5.0
+    ENABLED: False
+    NORM_TYPE: 2.0
+  DELAY_EPOCHS: 0
+  ETA_MIN_LR: 1e-07
+  FREEZE_ITERS: 0
+  GAMMA: 0.1
+  HEADS_LR_FACTOR: 1.0
+  IMS_PER_BATCH: 60
+  MAX_EPOCH: 60
+  MOMENTUM: 0.9
+  NESTEROV: False
+  OPT: Adam
+  SCHED: MultiStepLR
+  STEPS: [30, 50]
+  WARMUP_FACTOR: 0.1
+  WARMUP_ITERS: 2000
+  WARMUP_METHOD: linear
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  WEIGHT_DECAY_NORM: 0.0005
+TEST:
+  AQE:
+    ALPHA: 3.0
+    ENABLED: False
+    QE_K: 5
+    QE_TIME: 1
+  EVAL_PERIOD: 60
+  FLIP:
+    ENABLED: False
+  IMS_PER_BATCH: 256
+  METRIC: cosine
+  PRECISE_BN:
+    DATASET: Market1501
+    ENABLED: False
+    NUM_ITER: 300
+  RERANK:
+    ENABLED: False
+    K1: 20
+    K2: 6
+    LAMBDA: 0.3
+  ROC:
+    ENABLED: False
+[04/16 10:12:30 fastreid]: Full config saved to /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn/config.yaml
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/torchvision/transforms/transforms.py:330: UserWarning: Argument 'interpolation' of type int is deprecated since 0.13 and will be removed in 0.15. Please use InterpolationMode enum.
+  "Argument 'interpolation' of type int is deprecated since 0.13 and will be removed in 0.15. "
+start epoch 0
+iter 0
+iter 20
+iter 40
+iter 60
+iter 80
+iter 100
+iter 120
+iter 140
+iter 160
+iter 180
+iter 200
+iter 220
+iter 240
+iter 260
+iter 280
+iter 300
+iter 320
+iter 340
+iter 360
+iter 380
+iter 400
+iter 420
+iter 440
+iter 460
+iter 480
+iter 500
+iter 520
+iter 540
+iter 560
+iter 580
+iter 600
+iter 620
+iter 640
+iter 660
+iter 680
+iter 700
+iter 720
+iter 740
+iter 760
+iter 780
+start epoch 1
+iter 800
+iter 820
+iter 840
+iter 860
+iter 880
+iter 900
+iter 920
+iter 940
+iter 960
+iter 980
+iter 1000
+iter 1020
+iter 1040
+iter 1060
+iter 1080
+iter 1100
+iter 1120
+iter 1140
+iter 1160
+iter 1180
+iter 1200
+iter 1220
+iter 1240
+iter 1260
+iter 1280
+iter 1300
+iter 1320
+iter 1340
+iter 1360
+iter 1380
+iter 1400
+iter 1420
+iter 1440
+iter 1460
+iter 1480
+iter 1500
+iter 1520
+iter 1540
+iter 1560
+iter 1580
+start epoch 2
+iter 1600
+iter 1620
+iter 1640
+iter 1660
+iter 1680
+iter 1700
+iter 1720
+iter 1740
+iter 1760
+iter 1780
+iter 1800
+iter 1820
+iter 1840
+iter 1860
+iter 1880
+iter 1900
+iter 1920
+iter 1940
+iter 1960
+iter 1980
+iter 2000
+iter 2020
+iter 2040
+iter 2060
+iter 2080
+iter 2100
+iter 2120
+iter 2140
+iter 2160
+iter 2180
+iter 2200
+iter 2220
+iter 2240
+iter 2260
+iter 2280
+iter 2300
+iter 2320
+iter 2340
+iter 2360
+iter 2380
+start epoch 3
+iter 2400
+iter 2420
+iter 2440
+iter 2460
+iter 2480
+iter 2500
+iter 2520
+iter 2540
+iter 2560
+iter 2580
+iter 2600
+iter 2620
+iter 2640
+iter 2660
+iter 2680
+iter 2700
+iter 2720
+iter 2740
+iter 2760
+iter 2780
+iter 2800
+iter 2820
+iter 2840
+iter 2860
+iter 2880
+iter 2900
+iter 2920
+iter 2940
+iter 2960
+iter 2980
+iter 3000
+iter 3020
+iter 3040
+iter 3060
+iter 3080
+iter 3100
+iter 3120
+iter 3140
+iter 3160
+iter 3180
+start epoch 4
+iter 3200
+iter 3220
+iter 3240
+iter 3260
+iter 3280
+iter 3300
+iter 3320
+iter 3340
+iter 3360
+iter 3380
+iter 3400
+iter 3420
+iter 3440
+iter 3460
+iter 3480
+iter 3500
+iter 3520
+iter 3540
+iter 3560
+iter 3580
+iter 3600
+iter 3620
+iter 3640
+iter 3660
+iter 3680
+iter 3700
+iter 3720
+iter 3740
+iter 3760
+iter 3780
+iter 3800
+iter 3820
+iter 3840
+iter 3860
+iter 3880
+iter 3900
+iter 3920
+iter 3940
+iter 3960
+iter 3980
+start epoch 5
+iter 4000
+iter 4020
+iter 4040
+iter 4060
+iter 4080
+iter 4100
+iter 4120
+iter 4140
+iter 4160
+iter 4180
+iter 4200
+iter 4220
+iter 4240
+iter 4260
+iter 4280
+iter 4300
+iter 4320
+iter 4340
+iter 4360
+iter 4380
+iter 4400
+iter 4420
+iter 4440
+iter 4460
+iter 4480
+iter 4500
+iter 4520
+iter 4540
+iter 4560
+iter 4580
+iter 4600
+iter 4620
+iter 4640
+iter 4660
+iter 4680
+iter 4700
+iter 4720
+iter 4740
+iter 4760
+iter 4780
+start epoch 6
+iter 4800
+iter 4820
+iter 4840
+iter 4860
+iter 4880
+iter 4900
+iter 4920
+iter 4940
+iter 4960
+iter 4980
+iter 5000
+iter 5020
+iter 5040
+iter 5060
+iter 5080
+iter 5100
+iter 5120
+iter 5140
+iter 5160
+iter 5180
+iter 5200
+iter 5220
+iter 5240
+iter 5260
+iter 5280
+iter 5300
+iter 5320
+iter 5340
+iter 5360
+iter 5380
+iter 5400
+iter 5420
+iter 5440
+iter 5460
+iter 5480
+iter 5500
+iter 5520
+iter 5540
+iter 5560
+start epoch 7
+iter 5580
+iter 5600
+iter 5620
+iter 5640
+iter 5660
+iter 5680
+iter 5700
+iter 5720
+iter 5740
+iter 5760
+iter 5780
+iter 5800
+iter 5820
+iter 5840
+iter 5860
+iter 5880
+iter 5900
+iter 5920
+iter 5940
+iter 5960
+iter 5980
+iter 6000
+iter 6020
+iter 6040
+iter 6060
+iter 6080
+iter 6100
+iter 6120
+iter 6140
+iter 6160
+iter 6180
+iter 6200
+iter 6220
+iter 6240
+iter 6260
+iter 6280
+iter 6300
+iter 6320
+iter 6340
+iter 6360
+start epoch 8
+iter 6380
+iter 6400
+iter 6420
+iter 6440
+iter 6460
+iter 6480
+iter 6500
+iter 6520
+iter 6540
+iter 6560
+iter 6580
+iter 6600
+iter 6620
+iter 6640
+iter 6660
+iter 6680
+iter 6700
+iter 6720
+iter 6740
+iter 6760
+iter 6780
+iter 6800
+iter 6820
+iter 6840
+iter 6860
+iter 6880
+iter 6900
+iter 6920
+iter 6940
+iter 6960
+iter 6980
+iter 7000
+iter 7020
+iter 7040
+iter 7060
+iter 7080
+iter 7100
+iter 7120
+iter 7140
+iter 7160
+start epoch 9
+iter 7180
+iter 7200
+iter 7220
+iter 7240
+iter 7260
+iter 7280
+iter 7300
+iter 7320
+iter 7340
+iter 7360
+iter 7380
+iter 7400
+iter 7420
+iter 7440
+iter 7460
+iter 7480
+iter 7500
+iter 7520
+iter 7540
+iter 7560
+iter 7580
+iter 7600
+iter 7620
+iter 7640
+iter 7660
+iter 7680
+iter 7700
+iter 7720
+iter 7740
+iter 7760
+iter 7780
+iter 7800
+iter 7820
+iter 7840
+iter 7860
+iter 7880
+iter 7900
+iter 7920
+iter 7940
+iter 7960
+start epoch 10
+iter 7980
+iter 8000
+iter 8020
+iter 8040
+iter 8060
+iter 8080
+iter 8100
+iter 8120
+iter 8140
+iter 8160
+iter 8180
+iter 8200
+iter 8220
+iter 8240
+iter 8260
+iter 8280
+iter 8300
+iter 8320
+iter 8340
+iter 8360
+iter 8380
+iter 8400
+iter 8420
+iter 8440
+iter 8460
+iter 8480
+iter 8500
+iter 8520
+iter 8540
+iter 8560
+iter 8580
+iter 8600
+iter 8620
+iter 8640
+iter 8660
+iter 8680
+iter 8700
+iter 8720
+iter 8740
+iter 8760
+start epoch 11
+iter 8780
+iter 8800
+iter 8820
+iter 8840
+iter 8860
+iter 8880
+iter 8900
+iter 8920
+iter 8940
+iter 8960
+iter 8980
+iter 9000
+iter 9020
+iter 9040
+iter 9060
+iter 9080
+iter 9100
+iter 9120
+iter 9140
+iter 9160
+iter 9180
+iter 9200
+iter 9220
+iter 9240
+iter 9260
+iter 9280
+iter 9300
+iter 9320
+iter 9340
+iter 9360
+iter 9380
+iter 9400
+iter 9420
+iter 9440
+iter 9460
+iter 9480
+iter 9500
+iter 9520
+iter 9540
+iter 9560
+start epoch 12
+iter 9580
+iter 9600
+iter 9620
+iter 9640
+iter 9660
+iter 9680
+iter 9700
+iter 9720
+iter 9740
+iter 9760
+iter 9780
+iter 9800
+iter 9820
+iter 9840
+iter 9860
+iter 9880
+iter 9900
+iter 9920
+iter 9940
+iter 9960
+iter 9980
+iter 10000
+iter 10020
+iter 10040
+iter 10060
+iter 10080
+iter 10100
+iter 10120
+iter 10140
+iter 10160
+iter 10180
+iter 10200
+iter 10220
+iter 10240
+iter 10260
+iter 10280
+iter 10300
+iter 10320
+iter 10340
+iter 10360
+start epoch 13
+iter 10380
+iter 10400
+iter 10420
+iter 10440
+iter 10460
+iter 10480
+iter 10500
+iter 10520
+iter 10540
+iter 10560
+iter 10580
+iter 10600
+iter 10620
+iter 10640
+iter 10660
+iter 10680
+iter 10700
+iter 10720
+iter 10740
+iter 10760
+iter 10780
+iter 10800
+iter 10820
+iter 10840
+iter 10860
+iter 10880
+iter 10900
+iter 10920
+iter 10940
+iter 10960
+iter 10980
+iter 11000
+iter 11020
+iter 11040
+iter 11060
+iter 11080
+iter 11100
+iter 11120
+iter 11140
+start epoch 14
+iter 11160
+iter 11180
+iter 11200
+iter 11220
+iter 11240
+iter 11260
+iter 11280
+iter 11300
+iter 11320
+iter 11340
+iter 11360
+iter 11380
+iter 11400
+iter 11420
+iter 11440
+iter 11460
+iter 11480
+iter 11500
+iter 11520
+iter 11540
+iter 11560
+iter 11580
+iter 11600
+iter 11620
+iter 11640
+iter 11660
+iter 11680
+iter 11700
+iter 11720
+iter 11740
+iter 11760
+iter 11780
+iter 11800
+iter 11820
+iter 11840
+iter 11860
+iter 11880
+iter 11900
+iter 11920
+iter 11940
+start epoch 15
+iter 11960
+iter 11980
+iter 12000
+iter 12020
+iter 12040
+iter 12060
+iter 12080
+iter 12100
+iter 12120
+iter 12140
+iter 12160
+iter 12180
+iter 12200
+iter 12220
+iter 12240
+iter 12260
+iter 12280
+iter 12300
+iter 12320
+iter 12340
+iter 12360
+iter 12380
+iter 12400
+iter 12420
+iter 12440
+iter 12460
+iter 12480
+iter 12500
+iter 12520
+iter 12540
+iter 12560
+iter 12580
+iter 12600
+iter 12620
+iter 12640
+iter 12660
+iter 12680
+iter 12700
+iter 12720
+iter 12740
+start epoch 16
+iter 12760
+iter 12780
+iter 12800
+iter 12820
+iter 12840
+iter 12860
+iter 12880
+iter 12900
+iter 12920
+iter 12940
+iter 12960
+iter 12980
+iter 13000
+iter 13020
+iter 13040
+iter 13060
+iter 13080
+iter 13100
+iter 13120
+iter 13140
+iter 13160
+iter 13180
+iter 13200
+iter 13220
+iter 13240
+iter 13260
+iter 13280
+iter 13300
+iter 13320
+iter 13340
+iter 13360
+iter 13380
+iter 13400
+iter 13420
+iter 13440
+iter 13460
+iter 13480
+iter 13500
+iter 13520
+iter 13540
+start epoch 17
+iter 13560
+iter 13580
+iter 13600
+iter 13620
+iter 13640
+iter 13660
+iter 13680
+iter 13700
+iter 13720
+iter 13740
+iter 13760
+iter 13780
+iter 13800
+iter 13820
+iter 13840
+iter 13860
+iter 13880
+iter 13900
+iter 13920
+iter 13940
+iter 13960
+iter 13980
+iter 14000
+iter 14020
+iter 14040
+iter 14060
+iter 14080
+iter 14100
+iter 14120
+iter 14140
+iter 14160
+iter 14180
+iter 14200
+iter 14220
+iter 14240
+iter 14260
+iter 14280
+iter 14300
+iter 14320
+iter 14340
+start epoch 18
+iter 14360
+iter 14380
+iter 14400
+iter 14420
+iter 14440
+iter 14460
+iter 14480
+iter 14500
+iter 14520
+iter 14540
+iter 14560
+iter 14580
+iter 14600
+iter 14620
+iter 14640
+iter 14660
+iter 14680
+iter 14700
+iter 14720
+iter 14740
+iter 14760
+iter 14780
+iter 14800
+iter 14820
+iter 14840
+iter 14860
+iter 14880
+iter 14900
+iter 14920
+iter 14940
+iter 14960
+iter 14980
+iter 15000
+iter 15020
+iter 15040
+iter 15060
+iter 15080
+iter 15100
+iter 15120
+iter 15140
+start epoch 19
+iter 15160
+iter 15180
+iter 15200
+iter 15220
+iter 15240
+iter 15260
+iter 15280
+iter 15300
+iter 15320
+iter 15340
+iter 15360
+iter 15380
+iter 15400
+iter 15420
+iter 15440
+iter 15460
+iter 15480
+iter 15500
+iter 15520
+iter 15540
+iter 15560
+iter 15580
+iter 15600
+iter 15620
+iter 15640
+iter 15660
+iter 15680
+iter 15700
+iter 15720
+iter 15740
+iter 15760
+iter 15780
+iter 15800
+iter 15820
+iter 15840
+iter 15860
+iter 15880
+iter 15900
+iter 15920
+start epoch 20
+iter 15940
+iter 15960
+iter 15980
+iter 16000
+iter 16020
+iter 16040
+iter 16060
+iter 16080
+iter 16100
+iter 16120
+iter 16140
+iter 16160
+iter 16180
+iter 16200
+iter 16220
+iter 16240
+iter 16260
+iter 16280
+iter 16300
+iter 16320
+iter 16340
+iter 16360
+iter 16380
+iter 16400
+iter 16420
+iter 16440
+iter 16460
+iter 16480
+iter 16500
+iter 16520
+iter 16540
+iter 16560
+iter 16580
+iter 16600
+iter 16620
+iter 16640
+iter 16660
+iter 16680
+iter 16700
+iter 16720
+start epoch 21
+iter 16740
+iter 16760
+iter 16780
+iter 16800
+iter 16820
+iter 16840
+iter 16860
+iter 16880
+iter 16900
+iter 16920
+iter 16940
+iter 16960
+iter 16980
+iter 17000
+iter 17020
+iter 17040
+iter 17060
+iter 17080
+iter 17100
+iter 17120
+iter 17140
+iter 17160
+iter 17180
+iter 17200
+iter 17220
+iter 17240
+iter 17260
+iter 17280
+iter 17300
+iter 17320
+iter 17340
+iter 17360
+iter 17380
+iter 17400
+iter 17420
+iter 17440
+iter 17460
+iter 17480
+iter 17500
+iter 17520
+start epoch 22
+iter 17540
+iter 17560
+iter 17580
+iter 17600
+iter 17620
+iter 17640
+iter 17660
+iter 17680
+iter 17700
+iter 17720
+iter 17740
+iter 17760
+iter 17780
+iter 17800
+iter 17820
+iter 17840
+iter 17860
+iter 17880
+iter 17900
+iter 17920
+iter 17940
+iter 17960
+iter 17980
+iter 18000
+iter 18020
+iter 18040
+iter 18060
+iter 18080
+iter 18100
+iter 18120
+iter 18140
+iter 18160
+iter 18180
+iter 18200
+iter 18220
+iter 18240
+iter 18260
+iter 18280
+iter 18300
+iter 18320
+start epoch 23
+iter 18340
+iter 18360
+iter 18380
+iter 18400
+iter 18420
+iter 18440
+iter 18460
+iter 18480
+iter 18500
+iter 18520
+iter 18540
+iter 18560
+iter 18580
+iter 18600
+iter 18620
+iter 18640
+iter 18660
+iter 18680
+iter 18700
+iter 18720
+iter 18740
+iter 18760
+iter 18780
+iter 18800
+iter 18820
+iter 18840
+iter 18860
+iter 18880
+iter 18900
+iter 18920
+iter 18940
+iter 18960
+iter 18980
+iter 19000
+iter 19020
+iter 19040
+iter 19060
+iter 19080
+iter 19100
+iter 19120
+start epoch 24
+iter 19140
+iter 19160
+iter 19180
+iter 19200
+iter 19220
+iter 19240
+iter 19260
+iter 19280
+iter 19300
+iter 19320
+iter 19340
+iter 19360
+iter 19380
+iter 19400
+iter 19420
+iter 19440
+iter 19460
+iter 19480
+iter 19500
+iter 19520
+iter 19540
+iter 19560
+iter 19580
+iter 19600
+iter 19620
+iter 19640
+iter 19660
+iter 19680
+iter 19700
+iter 19720
+iter 19740
+iter 19760
+iter 19780
+iter 19800
+iter 19820
+iter 19840
+iter 19860
+iter 19880
+iter 19900
+iter 19920
+start epoch 25
+iter 19940
+iter 19960
+iter 19980
+iter 20000
+iter 20020
+iter 20040
+iter 20060
+iter 20080
+iter 20100
+iter 20120
+iter 20140
+iter 20160
+iter 20180
+iter 20200
+iter 20220
+iter 20240
+iter 20260
+iter 20280
+iter 20300
+iter 20320
+iter 20340
+iter 20360
+iter 20380
+iter 20400
+iter 20420
+iter 20440
+iter 20460
+iter 20480
+iter 20500
+iter 20520
+iter 20540
+iter 20560
+iter 20580
+iter 20600
+iter 20620
+iter 20640
+iter 20660
+iter 20680
+iter 20700
+iter 20720
+start epoch 26
+iter 20740
+iter 20760
+iter 20780
+iter 20800
+iter 20820
+iter 20840
+iter 20860
+iter 20880
+iter 20900
+iter 20920
+iter 20940
+iter 20960
+iter 20980
+iter 21000
+iter 21020
+iter 21040
+iter 21060
+iter 21080
+iter 21100
+iter 21120
+iter 21140
+iter 21160
+iter 21180
+iter 21200
+iter 21220
+iter 21240
+iter 21260
+iter 21280
+iter 21300
+iter 21320
+iter 21340
+iter 21360
+iter 21380
+iter 21400
+iter 21420
+iter 21440
+iter 21460
+iter 21480
+iter 21500
+start epoch 27
+iter 21520
+iter 21540
+iter 21560
+iter 21580
+iter 21600
+iter 21620
+iter 21640
+iter 21660
+iter 21680
+iter 21700
+iter 21720
+iter 21740
+iter 21760
+iter 21780
+iter 21800
+iter 21820
+iter 21840
+iter 21860
+iter 21880
+iter 21900
+iter 21920
+iter 21940
+iter 21960
+iter 21980
+iter 22000
+iter 22020
+iter 22040
+iter 22060
+iter 22080
+iter 22100
+iter 22120
+iter 22140
+iter 22160
+iter 22180
+iter 22200
+iter 22220
+iter 22240
+iter 22260
+iter 22280
+iter 22300
+start epoch 28
+iter 22320
+iter 22340
+iter 22360
+iter 22380
+iter 22400
+iter 22420
+iter 22440
+iter 22460
+iter 22480
+iter 22500
+iter 22520
+iter 22540
+iter 22560
+iter 22580
+iter 22600
+iter 22620
+iter 22640
+iter 22660
+iter 22680
+iter 22700
+iter 22720
+iter 22740
+iter 22760
+iter 22780
+iter 22800
+iter 22820
+iter 22840
+iter 22860
+iter 22880
+iter 22900
+iter 22920
+iter 22940
+iter 22960
+iter 22980
+iter 23000
+iter 23020
+iter 23040
+iter 23060
+iter 23080
+iter 23100
+start epoch 29
+iter 23120
+iter 23140
+iter 23160
+iter 23180
+iter 23200
+iter 23220
+iter 23240
+iter 23260
+iter 23280
+iter 23300
+iter 23320
+iter 23340
+iter 23360
+iter 23380
+iter 23400
+iter 23420
+iter 23440
+iter 23460
+iter 23480
+iter 23500
+iter 23520
+iter 23540
+iter 23560
+iter 23580
+iter 23600
+iter 23620
+iter 23640
+iter 23660
+iter 23680
+iter 23700
+iter 23720
+iter 23740
+iter 23760
+iter 23780
+iter 23800
+iter 23820
+iter 23840
+iter 23860
+iter 23880
+iter 23900
+start epoch 30
+iter 23920
+iter 23940
+iter 23960
+iter 23980
+iter 24000
+iter 24020
+iter 24040
+iter 24060
+iter 24080
+iter 24100
+iter 24120
+iter 24140
+iter 24160
+iter 24180
+iter 24200
+iter 24220
+iter 24240
+iter 24260
+iter 24280
+iter 24300
+iter 24320
+iter 24340
+iter 24360
+iter 24380
+iter 24400
+iter 24420
+iter 24440
+iter 24460
+iter 24480
+iter 24500
+iter 24520
+iter 24540
+iter 24560
+iter 24580
+iter 24600
+iter 24620
+iter 24640
+iter 24660
+iter 24680
+iter 24700
+start epoch 31
+iter 24720
+iter 24740
+iter 24760
+iter 24780
+iter 24800
+iter 24820
+iter 24840
+iter 24860
+iter 24880
+iter 24900
+iter 24920
+iter 24940
+iter 24960
+iter 24980
+iter 25000
+iter 25020
+iter 25040
+iter 25060
+iter 25080
+iter 25100
+iter 25120
+iter 25140
+iter 25160
+iter 25180
+iter 25200
+iter 25220
+iter 25240
+iter 25260
+iter 25280
+iter 25300
+iter 25320
+iter 25340
+iter 25360
+iter 25380
+iter 25400
+iter 25420
+iter 25440
+iter 25460
+iter 25480
+iter 25500
+start epoch 32
+iter 25520
+iter 25540
+iter 25560
+iter 25580
+iter 25600
+iter 25620
+iter 25640
+iter 25660
+iter 25680
+iter 25700
+iter 25720
+iter 25740
+iter 25760
+iter 25780
+iter 25800
+iter 25820
+iter 25840
+iter 25860
+iter 25880
+iter 25900
+iter 25920
+iter 25940
+iter 25960
+iter 25980
+iter 26000
+iter 26020
+iter 26040
+iter 26060
+iter 26080
+iter 26100
+iter 26120
+iter 26140
+iter 26160
+iter 26180
+iter 26200
+iter 26220
+iter 26240
+iter 26260
+iter 26280
+iter 26300
+start epoch 33
+iter 26320
+iter 26340
+iter 26360
+iter 26380
+iter 26400
+iter 26420
+iter 26440
+iter 26460
+iter 26480
+iter 26500
+iter 26520
+iter 26540
+iter 26560
+iter 26580
+iter 26600
+iter 26620
+iter 26640
+iter 26660
+iter 26680
+iter 26700
+iter 26720
+iter 26740
+iter 26760
+iter 26780
+iter 26800
+iter 26820
+iter 26840
+iter 26860
+iter 26880
+iter 26900
+iter 26920
+iter 26940
+iter 26960
+iter 26980
+iter 27000
+iter 27020
+iter 27040
+iter 27060
+iter 27080
+start epoch 34
+iter 27100
+iter 27120
+iter 27140
+iter 27160
+iter 27180
+iter 27200
+iter 27220
+iter 27240
+iter 27260
+iter 27280
+iter 27300
+iter 27320
+iter 27340
+iter 27360
+iter 27380
+iter 27400
+iter 27420
+iter 27440
+iter 27460
+iter 27480
+iter 27500
+iter 27520
+iter 27540
+iter 27560
+iter 27580
+iter 27600
+iter 27620
+iter 27640
+iter 27660
+iter 27680
+iter 27700
+iter 27720
+iter 27740
+iter 27760
+iter 27780
+iter 27800
+iter 27820
+iter 27840
+iter 27860
+iter 27880
+start epoch 35
+iter 27900
+iter 27920
+iter 27940
+iter 27960
+iter 27980
+iter 28000
+iter 28020
+iter 28040
+iter 28060
+iter 28080
+iter 28100
+iter 28120
+iter 28140
+iter 28160
+iter 28180
+iter 28200
+iter 28220
+iter 28240
+iter 28260
+iter 28280
+iter 28300
+iter 28320
+iter 28340
+iter 28360
+iter 28380
+iter 28400
+iter 28420
+iter 28440
+iter 28460
+iter 28480
+iter 28500
+iter 28520
+iter 28540
+iter 28560
+iter 28580
+iter 28600
+iter 28620
+iter 28640
+iter 28660
+iter 28680
+start epoch 36
+iter 28700
+iter 28720
+iter 28740
+iter 28760
+iter 28780
+iter 28800
+iter 28820
+iter 28840
+iter 28860
+iter 28880
+iter 28900
+iter 28920
+iter 28940
+iter 28960
+iter 28980
+iter 29000
+iter 29020
+iter 29040
+iter 29060
+iter 29080
+iter 29100
+iter 29120
+iter 29140
+iter 29160
+iter 29180
+iter 29200
+iter 29220
+iter 29240
+iter 29260
+iter 29280
+iter 29300
+iter 29320
+iter 29340
+iter 29360
+iter 29380
+iter 29400
+iter 29420
+iter 29440
+iter 29460
+iter 29480
+start epoch 37
+iter 29500
+iter 29520
+iter 29540
+iter 29560
+iter 29580
+iter 29600
+iter 29620
+iter 29640
+iter 29660
+iter 29680
+iter 29700
+iter 29720
+iter 29740
+iter 29760
+iter 29780
+iter 29800
+iter 29820
+iter 29840
+iter 29860
+iter 29880
+iter 29900
+iter 29920
+iter 29940
+iter 29960
+iter 29980
+iter 30000
+iter 30020
+iter 30040
+iter 30060
+iter 30080
+iter 30100
+iter 30120
+iter 30140
+iter 30160
+iter 30180
+iter 30200
+iter 30220
+iter 30240
+iter 30260
+iter 30280
+start epoch 38
+iter 30300
+iter 30320
+iter 30340
+iter 30360
+iter 30380
+iter 30400
+iter 30420
+iter 30440
+iter 30460
+iter 30480
+iter 30500
+iter 30520
+iter 30540
+iter 30560
+iter 30580
+iter 30600
+iter 30620
+iter 30640
+iter 30660
+iter 30680
+iter 30700
+iter 30720
+iter 30740
+iter 30760
+iter 30780
+iter 30800
+iter 30820
+iter 30840
+iter 30860
+iter 30880
+iter 30900
+iter 30920
+iter 30940
+iter 30960
+iter 30980
+iter 31000
+iter 31020
+iter 31040
+iter 31060
+iter 31080
+start epoch 39
+iter 31100
+iter 31120
+iter 31140
+iter 31160
+iter 31180
+iter 31200
+iter 31220
+iter 31240
+iter 31260
+iter 31280
+iter 31300
+iter 31320
+iter 31340
+iter 31360
+iter 31380
+iter 31400
+iter 31420
+iter 31440
+iter 31460
+iter 31480
+iter 31500
+iter 31520
+iter 31540
+iter 31560
+iter 31580
+iter 31600
+iter 31620
+iter 31640
+iter 31660
+iter 31680
+iter 31700
+iter 31720
+iter 31740
+iter 31760
+iter 31780
+iter 31800
+iter 31820
+iter 31840
+iter 31860
+start epoch 40
+iter 31880
+iter 31900
+iter 31920
+iter 31940
+iter 31960
+iter 31980
+iter 32000
+iter 32020
+iter 32040
+iter 32060
+iter 32080
+iter 32100
+iter 32120
+iter 32140
+iter 32160
+iter 32180
+iter 32200
+iter 32220
+iter 32240
+iter 32260
+iter 32280
+iter 32300
+iter 32320
+iter 32340
+iter 32360
+iter 32380
+iter 32400
+iter 32420
+iter 32440
+iter 32460
+iter 32480
+iter 32500
+iter 32520
+iter 32540
+iter 32560
+iter 32580
+iter 32600
+iter 32620
+iter 32640
+iter 32660
+start epoch 41
+iter 32680
+iter 32700
+iter 32720
+iter 32740
+iter 32760
+iter 32780
+iter 32800
+iter 32820
+iter 32840
+iter 32860
+iter 32880
+iter 32900
+iter 32920
+iter 32940
+iter 32960
+iter 32980
+iter 33000
+iter 33020
+iter 33040
+iter 33060
+iter 33080
+iter 33100
+iter 33120
+iter 33140
+iter 33160
+iter 33180
+iter 33200
+iter 33220
+iter 33240
+iter 33260
+iter 33280
+iter 33300
+iter 33320
+iter 33340
+iter 33360
+iter 33380
+iter 33400
+iter 33420
+iter 33440
+iter 33460
+start epoch 42
+iter 33480
+iter 33500
+iter 33520
+iter 33540
+iter 33560
+iter 33580
+iter 33600
+iter 33620
+iter 33640
+iter 33660
+iter 33680
+iter 33700
+iter 33720
+iter 33740
+iter 33760
+iter 33780
+iter 33800
+iter 33820
+iter 33840
+iter 33860
+iter 33880
+iter 33900
+iter 33920
+iter 33940
+iter 33960
+iter 33980
+iter 34000
+iter 34020
+iter 34040
+iter 34060
+iter 34080
+iter 34100
+iter 34120
+iter 34140
+iter 34160
+iter 34180
+iter 34200
+iter 34220
+iter 34240
+iter 34260
+start epoch 43
+iter 34280
+iter 34300
+iter 34320
+iter 34340
+iter 34360
+iter 34380
+iter 34400
+iter 34420
+iter 34440
+iter 34460
+iter 34480
+iter 34500
+iter 34520
+iter 34540
+iter 34560
+iter 34580
+iter 34600
+iter 34620
+iter 34640
+iter 34660
+iter 34680
+iter 34700
+iter 34720
+iter 34740
+iter 34760
+iter 34780
+iter 34800
+iter 34820
+iter 34840
+iter 34860
+iter 34880
+iter 34900
+iter 34920
+iter 34940
+iter 34960
+iter 34980
+iter 35000
+iter 35020
+iter 35040
+iter 35060
+start epoch 44
+iter 35080
+iter 35100
+iter 35120
+iter 35140
+iter 35160
+iter 35180
+iter 35200
+iter 35220
+iter 35240
+iter 35260
+iter 35280
+iter 35300
+iter 35320
+iter 35340
+iter 35360
+iter 35380
+iter 35400
+iter 35420
+iter 35440
+iter 35460
+iter 35480
+iter 35500
+iter 35520
+iter 35540
+iter 35560
+iter 35580
+iter 35600
+iter 35620
+iter 35640
+iter 35660
+iter 35680
+iter 35700
+iter 35720
+iter 35740
+iter 35760
+iter 35780
+iter 35800
+iter 35820
+iter 35840
+iter 35860
+start epoch 45
+iter 35880
+iter 35900
+iter 35920
+iter 35940
+iter 35960
+iter 35980
+iter 36000
+iter 36020
+iter 36040
+iter 36060
+iter 36080
+iter 36100
+iter 36120
+iter 36140
+iter 36160
+iter 36180
+iter 36200
+iter 36220
+iter 36240
+iter 36260
+iter 36280
+iter 36300
+iter 36320
+iter 36340
+iter 36360
+iter 36380
+iter 36400
+iter 36420
+iter 36440
+iter 36460
+iter 36480
+iter 36500
+iter 36520
+iter 36540
+iter 36560
+iter 36580
+iter 36600
+iter 36620
+iter 36640
+iter 36660
+start epoch 46
+iter 36680
+iter 36700
+iter 36720
+iter 36740
+iter 36760
+iter 36780
+iter 36800
+iter 36820
+iter 36840
+iter 36860
+iter 36880
+iter 36900
+iter 36920
+iter 36940
+iter 36960
+iter 36980
+iter 37000
+iter 37020
+iter 37040
+iter 37060
+iter 37080
+iter 37100
+iter 37120
+iter 37140
+iter 37160
+iter 37180
+iter 37200
+iter 37220
+iter 37240
+iter 37260
+iter 37280
+iter 37300
+iter 37320
+iter 37340
+iter 37360
+iter 37380
+iter 37400
+iter 37420
+iter 37440
+start epoch 47
+iter 37460
+iter 37480
+iter 37500
+iter 37520
+iter 37540
+iter 37560
+iter 37580
+iter 37600
+iter 37620
+iter 37640
+iter 37660
+iter 37680
+iter 37700
+iter 37720
+iter 37740
+iter 37760
+iter 37780
+iter 37800
+iter 37820
+iter 37840
+iter 37860
+iter 37880
+iter 37900
+iter 37920
+iter 37940
+iter 37960
+iter 37980
+iter 38000
+iter 38020
+iter 38040
+iter 38060
+iter 38080
+iter 38100
+iter 38120
+iter 38140
+iter 38160
+iter 38180
+iter 38200
+iter 38220
+iter 38240
+start epoch 48
+iter 38260
+iter 38280
+iter 38300
+iter 38320
+iter 38340
+iter 38360
+iter 38380
+iter 38400
+iter 38420
+iter 38440
+iter 38460
+iter 38480
+iter 38500
+iter 38520
+iter 38540
+iter 38560
+iter 38580
+iter 38600
+iter 38620
+iter 38640
+iter 38660
+iter 38680
+iter 38700
+iter 38720
+iter 38740
+iter 38760
+iter 38780
+iter 38800
+iter 38820
+iter 38840
+iter 38860
+iter 38880
+iter 38900
+iter 38920
+iter 38940
+iter 38960
+iter 38980
+iter 39000
+iter 39020
+iter 39040
+start epoch 49
+iter 39060
+iter 39080
+iter 39100
+iter 39120
+iter 39140
+iter 39160
+iter 39180
+iter 39200
+iter 39220
+iter 39240
+iter 39260
+iter 39280
+iter 39300
+iter 39320
+iter 39340
+iter 39360
+iter 39380
+iter 39400
+iter 39420
+iter 39440
+iter 39460
+iter 39480
+iter 39500
+iter 39520
+iter 39540
+iter 39560
+iter 39580
+iter 39600
+iter 39620
+iter 39640
+iter 39660
+iter 39680
+iter 39700
+iter 39720
+iter 39740
+iter 39760
+iter 39780
+iter 39800
+iter 39820
+iter 39840
+start epoch 50
+iter 39860
+iter 39880
+iter 39900
+iter 39920
+iter 39940
+iter 39960
+iter 39980
+iter 40000
+iter 40020
+iter 40040
+iter 40060
+iter 40080
+iter 40100
+iter 40120
+iter 40140
+iter 40160
+iter 40180
+iter 40200
+iter 40220
+iter 40240
+iter 40260
+iter 40280
+iter 40300
+iter 40320
+iter 40340
+iter 40360
+iter 40380
+iter 40400
+iter 40420
+iter 40440
+iter 40460
+iter 40480
+iter 40500
+iter 40520
+iter 40540
+iter 40560
+iter 40580
+iter 40600
+iter 40620
+iter 40640
+start epoch 51
+iter 40660
+iter 40680
+iter 40700
+iter 40720
+iter 40740
+iter 40760
+iter 40780
+iter 40800
+iter 40820
+iter 40840
+iter 40860
+iter 40880
+iter 40900
+iter 40920
+iter 40940
+iter 40960
+iter 40980
+iter 41000
+iter 41020
+iter 41040
+iter 41060
+iter 41080
+iter 41100
+iter 41120
+iter 41140
+iter 41160
+iter 41180
+iter 41200
+iter 41220
+iter 41240
+iter 41260
+iter 41280
+iter 41300
+iter 41320
+iter 41340
+iter 41360
+iter 41380
+iter 41400
+iter 41420
+iter 41440
+start epoch 52
+iter 41460
+iter 41480
+iter 41500
+iter 41520
+iter 41540
+iter 41560
+iter 41580
+iter 41600
+iter 41620
+iter 41640
+iter 41660
+iter 41680
+iter 41700
+iter 41720
+iter 41740
+iter 41760
+iter 41780
+iter 41800
+iter 41820
+iter 41840
+iter 41860
+iter 41880
+iter 41900
+iter 41920
+iter 41940
+iter 41960
+iter 41980
+iter 42000
+iter 42020
+iter 42040
+iter 42060
+iter 42080
+iter 42100
+iter 42120
+iter 42140
+iter 42160
+iter 42180
+iter 42200
+iter 42220
+iter 42240
+start epoch 53
+iter 42260
+iter 42280
+iter 42300
+iter 42320
+iter 42340
+iter 42360
+iter 42380
+iter 42400
+iter 42420
+iter 42440
+iter 42460
+iter 42480
+iter 42500
+iter 42520
+iter 42540
+iter 42560
+iter 42580
+iter 42600
+iter 42620
+iter 42640
+iter 42660
+iter 42680
+iter 42700
+iter 42720
+iter 42740
+iter 42760
+iter 42780
+iter 42800
+iter 42820
+iter 42840
+iter 42860
+iter 42880
+iter 42900
+iter 42920
+iter 42940
+iter 42960
+iter 42980
+iter 43000
+iter 43020
+start epoch 54
+iter 43040
+iter 43060
+iter 43080
+iter 43100
+iter 43120
+iter 43140
+iter 43160
+iter 43180
+iter 43200
+iter 43220
+iter 43240
+iter 43260
+iter 43280
+iter 43300
+iter 43320
+iter 43340
+iter 43360
+iter 43380
+iter 43400
+iter 43420
+iter 43440
+iter 43460
+iter 43480
+iter 43500
+iter 43520
+iter 43540
+iter 43560
+iter 43580
+iter 43600
+iter 43620
+iter 43640
+iter 43660
+iter 43680
+iter 43700
+iter 43720
+iter 43740
+iter 43760
+iter 43780
+iter 43800
+iter 43820
+start epoch 55
+iter 43840
+iter 43860
+iter 43880
+iter 43900
+iter 43920
+iter 43940
+iter 43960
+iter 43980
+iter 44000
+iter 44020
+iter 44040
+iter 44060
+iter 44080
+iter 44100
+iter 44120
+iter 44140
+iter 44160
+iter 44180
+iter 44200
+iter 44220
+iter 44240
+iter 44260
+iter 44280
+iter 44300
+iter 44320
+iter 44340
+iter 44360
+iter 44380
+iter 44400
+iter 44420
+iter 44440
+iter 44460
+iter 44480
+iter 44500
+iter 44520
+iter 44540
+iter 44560
+iter 44580
+iter 44600
+iter 44620
+start epoch 56
+iter 44640
+iter 44660
+iter 44680
+iter 44700
+iter 44720
+iter 44740
+iter 44760
+iter 44780
+iter 44800
+iter 44820
+iter 44840
+iter 44860
+iter 44880
+iter 44900
+iter 44920
+iter 44940
+iter 44960
+iter 44980
+iter 45000
+iter 45020
+iter 45040
+iter 45060
+iter 45080
+iter 45100
+iter 45120
+iter 45140
+iter 45160
+iter 45180
+iter 45200
+iter 45220
+iter 45240
+iter 45260
+iter 45280
+iter 45300
+iter 45320
+iter 45340
+iter 45360
+iter 45380
+iter 45400
+iter 45420
+start epoch 57
+iter 45440
+iter 45460
+iter 45480
+iter 45500
+iter 45520
+iter 45540
+iter 45560
+iter 45580
+iter 45600
+iter 45620
+iter 45640
+iter 45660
+iter 45680
+iter 45700
+iter 45720
+iter 45740
+iter 45760
+iter 45780
+iter 45800
+iter 45820
+iter 45840
+iter 45860
+iter 45880
+iter 45900
+iter 45920
+iter 45940
+iter 45960
+iter 45980
+iter 46000
+iter 46020
+iter 46040
+iter 46060
+iter 46080
+iter 46100
+iter 46120
+iter 46140
+iter 46160
+iter 46180
+iter 46200
+iter 46220
+start epoch 58
+iter 46240
+iter 46260
+iter 46280
+iter 46300
+iter 46320
+iter 46340
+iter 46360
+iter 46380
+iter 46400
+iter 46420
+iter 46440
+iter 46460
+iter 46480
+iter 46500
+iter 46520
+iter 46540
+iter 46560
+iter 46580
+iter 46600
+iter 46620
+iter 46640
+iter 46660
+iter 46680
+iter 46700
+iter 46720
+iter 46740
+iter 46760
+iter 46780
+iter 46800
+iter 46820
+iter 46840
+iter 46860
+iter 46880
+iter 46900
+iter 46920
+iter 46940
+iter 46960
+iter 46980
+iter 47000
+iter 47020
+start epoch 59
+iter 47040
+iter 47060
+iter 47080
+iter 47100
+iter 47120
+iter 47140
+iter 47160
+iter 47180
+iter 47200
+iter 47220
+iter 47240
+iter 47260
+iter 47280
+iter 47300
+iter 47320
+iter 47340
+iter 47360
+iter 47380
+iter 47400
+iter 47420
+iter 47440
+iter 47460
+iter 47480
+iter 47500
+iter 47520
+iter 47540
+iter 47560
+iter 47580
+iter 47600
+iter 47620
+iter 47640
+iter 47660
+iter 47680
+iter 47700
+iter 47720
+iter 47740
+iter 47760
+iter 47780
+iter 47800
+make: Entering directory '/home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/fast_reid/fastreid/evaluation/rank_cylib'
+python3 setup.py build_ext --inplace
+Compiling rank_cy.pyx because it changed.
+Compiling roc_cy.pyx because it changed.
+[1/2] Cythonizing rank_cy.pyx
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/Cython/Compiler/Main.py:381: FutureWarning: Cython directive 'language_level' not set, using '3str' for now (Py3). This has changed from earlier releases! File: /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/fast_reid/fastreid/evaluation/rank_cylib/rank_cy.pyx
+  tree = Parsing.p_module(s, pxd, full_module_name)
+[2/2] Cythonizing roc_cy.pyx
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/Cython/Compiler/Main.py:381: FutureWarning: Cython directive 'language_level' not set, using '3str' for now (Py3). This has changed from earlier releases! File: /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/fast_reid/fastreid/evaluation/rank_cylib/roc_cy.pyx
+  tree = Parsing.p_module(s, pxd, full_module_name)
+performance hint: roc_cy.pyx:63:24: Index should be typed for more efficient access
+performance hint: roc_cy.pyx:64:25: Index should be typed for more efficient access
+performance hint: roc_cy.pyx:70:23: Index should be typed for more efficient access
+performance hint: roc_cy.pyx:71:49: Index should be typed for more efficient access
+performance hint: roc_cy.pyx:73:25: Index should be typed for more efficient access
+performance hint: roc_cy.pyx:74:49: Index should be typed for more efficient access
+In file included from /home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/ndarraytypes.h:1969,
+                 from /home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                 from /home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from rank_cy.c:1249:
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: #warning "Using deprecated NumPy API, disable it with " "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+   17 | #warning "Using deprecated NumPy API, disable it with " \
+      |  ^~~~~~~
+In file included from /home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/ndarraytypes.h:1969,
+                 from /home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/ndarrayobject.h:12,
+                 from /home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from roc_cy.c:1249:
+/home/wish/anaconda3/envs/botsort/lib/python3.7/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:17:2: warning: #warning "Using deprecated NumPy API, disable it with " "#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+   17 | #warning "Using deprecated NumPy API, disable it with " \
+      |  ^~~~~~~
+rm -rf build
+make: Leaving directory '/home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/fast_reid/fastreid/evaluation/rank_cylib'
+Exception during training:
+Traceback (most recent call last):
+  File "./fast_reid/fastreid/engine/train_loop.py", line 151, in train
+    self.after_epoch()
+  File "./fast_reid/fastreid/engine/train_loop.py", line 185, in after_epoch
+    h.after_epoch()
+  File "./fast_reid/fastreid/engine/hooks.py", line 377, in after_epoch
+    self._do_eval()
+  File "./fast_reid/fastreid/engine/hooks.py", line 351, in _do_eval
+    results = self._func()
+  File "./fast_reid/fastreid/engine/defaults.py", line 305, in test_and_save_results
+    self._last_eval_results = self.test(self.cfg, self.model)
+  File "./fast_reid/fastreid/engine/defaults.py", line 441, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator, flip_test=cfg.TEST.FLIP.ENABLED)
+  File "./fast_reid/fastreid/evaluation/evaluator.py", line 156, in inference_on_dataset
+    results = evaluator.evaluate()
+  File "./fast_reid/fastreid/evaluation/reid_evaluation.py", line 107, in evaluate
+    cmc, all_AP, all_INP = evaluate_rank(dist, query_pids, gallery_pids, query_camids, gallery_camids)
+  File "./fast_reid/fastreid/evaluation/rank.py", line 198, in evaluate_rank
+    return evaluate_cy(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_metric_cuhk03)
+  File "rank_cy.pyx", line 20, in rank_cy.evaluate_cy
+  File "rank_cy.pyx", line 28, in rank_cy.evaluate_cy
+  File "rank_cy.pyx", line 240, in rank_cy.eval_market1501_cy
+AssertionError: Error: all query identities do not appear in gallery
+Traceback (most recent call last):
+  File "fast_reid/tools/train_net.py", line 60, in <module>
+    args=(args,),
+  File "./fast_reid/fastreid/engine/launch.py", line 71, in launch
+    main_func(*args)
+  File "fast_reid/tools/train_net.py", line 47, in main
+    return trainer.train()
+  File "./fast_reid/fastreid/engine/defaults.py", line 350, in train
+    super().train(self.start_epoch, self.max_epoch, self.iters_per_epoch)
+  File "./fast_reid/fastreid/engine/train_loop.py", line 151, in train
+    self.after_epoch()
+  File "./fast_reid/fastreid/engine/train_loop.py", line 185, in after_epoch
+    h.after_epoch()
+  File "./fast_reid/fastreid/engine/hooks.py", line 377, in after_epoch
+    self._do_eval()
+  File "./fast_reid/fastreid/engine/hooks.py", line 351, in _do_eval
+    results = self._func()
+  File "./fast_reid/fastreid/engine/defaults.py", line 305, in test_and_save_results
+    self._last_eval_results = self.test(self.cfg, self.model)
+  File "./fast_reid/fastreid/engine/defaults.py", line 441, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator, flip_test=cfg.TEST.FLIP.ENABLED)
+  File "./fast_reid/fastreid/evaluation/evaluator.py", line 156, in inference_on_dataset
+    results = evaluator.evaluate()
+  File "./fast_reid/fastreid/evaluation/reid_evaluation.py", line 107, in evaluate
+    cmc, all_AP, all_INP = evaluate_rank(dist, query_pids, gallery_pids, query_camids, gallery_camids)
+  File "./fast_reid/fastreid/evaluation/rank.py", line 198, in evaluate_rank
+    return evaluate_cy(distmat, q_pids, g_pids, q_camids, g_camids, max_rank, use_metric_cuhk03)
+  File "rank_cy.pyx", line 20, in rank_cy.evaluate_cy
+  File "rank_cy.pyx", line 28, in rank_cy.evaluate_cy
+  File "rank_cy.pyx", line 240, in rank_cy.eval_market1501_cy
+AssertionError: Error: all query identities do not appear in gallery
+(botsort) wish@wish-MS-7C94:~/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT$

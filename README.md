@@ -158,10 +158,12 @@ $ bash tools/track_all_timestamps.sh --weights runs/train/yolov7-AICUP/weights/b
 $ cd AICUP_Baseline_BoT-SORT/
 
 # Before evaluation, you need to run tools/datasets/AICUP_to_MOT15.py to convert ground truth into submission format:
-python tools/datasets/AICUP_to_MOT15.py --AICUP_dir "your AICUP dataset path" --MOT15_dir "converted dataset directory" --imgsz "img size, (height, width)"
+$ python tools/datasets/AICUP_to_MOT15.py --AICUP_dir /home/wish/pro/AICUP/MCMOT/datasets --MOT15_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15
 
 # You can use tools/evaluate.py to evaluate your submission by the following command:
-python tools/evaluate.py --gt_dir "Path to the ground truth directory" --ts_dir "Path to the tracking result directory"
+$ cp 09*/*.txt tracking_results/
+$ cp 10*/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/tracking_results
 ```
 
 </details>

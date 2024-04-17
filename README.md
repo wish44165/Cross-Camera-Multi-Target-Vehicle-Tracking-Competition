@@ -169,8 +169,40 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
+---
+
+
+<details><summary>Fine-tune YOLOv9 for AICUP</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ git clone https://github.com/WongKinYiu/yolov9.git
+$ cd /yolov9
+$ pip install seaborn thop
+$ pip install ipython
+$ pip install psutil
+
+# demo
+$ wget https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c-converted.pt
+$ python detect.py --source './data/images/horses.jpg' --img 640 --device 0 --weights './yolov9-c-converted.pt' --name yolov9_c_640_detect
+
+# train
+$ wget https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e-converted.pt
+$ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml --img 1280 --cfg models/detect/yolov9-e.yaml --weights './yolov9-e-converted' --name yolov9-e --hyp hyp.scratch-high.yaml --min-items 0 --epochs 50 --close-mosaic 4
+```
+
+</details>
+
+
 - Github Link for Baseline Model
     - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))
+
+
+### Acknowledgements
+
+- [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT)
+- [Official YOLOv9](https://github.com/WongKinYiu/yolov9)
 
 
 ### References

@@ -207,4 +207,8 @@ $ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml -
 
 ### References
 
+### v7
 - [What is different in P5 model and P6 model? #141](https://github.com/WongKinYiu/yolov7/issues/141)
+
+### v9
+- [train.py tran_dual.py train_triple.py The relationship and difference between the three #1](https://github.com/WongKinYiu/yolov9/issues/1)

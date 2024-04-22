@@ -169,6 +169,9 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v7-e6e.png" alt="YOLOv7-E6E" width="70%" >
+
+
 ---
 
 
@@ -196,10 +199,13 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v8.png" alt="YOLOv8" width="70%" >
+
+
 ---
 
 
-<details><summary>Fine-tune YOLOv9 for AICUP</summary>
+<details><summary>YOLOv9</summary>
 
 ```bash
 $ cd AICUP_Baseline_BoT-SORT/
@@ -228,6 +234,12 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 ```
 
 </details>
+
+
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e.png" alt="YOLOv9-E" width="70%" >
+
+
+---
 
 
 - Github Link for Baseline Model

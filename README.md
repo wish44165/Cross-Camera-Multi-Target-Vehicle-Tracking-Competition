@@ -101,6 +101,12 @@ $ cd AICUP_Baseline_BoT-SORT/
 $ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
 ```
 
+The training results are stored by default in `logs/AICUP/bagtricks_R50-ibn`. 
+
+The storage location and model hyperparameters can be modified in `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`.
+
+You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyperparameters can be modified.
+
 </details>
 
 
@@ -172,7 +178,6 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 <img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v7-e6e.png" alt="YOLOv7-E6E" width="70%" >
 
 
----
 
 
 <details><summary>YOLOv8</summary>
@@ -202,7 +207,6 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 <img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v8.png" alt="YOLOv8" width="70%" >
 
 
----
 
 
 <details><summary>YOLOv9</summary>
@@ -242,13 +246,34 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 ---
 
 
-- Github Link for Baseline Model
-    - https://github.com/ricky-696/AICUP_Baseline_BoT-SORT ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))
+<details><summary>Train the ReID Module for AICUP</summary>
+
+`fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
+```
+>> line 4: SIZE_TRAIN: [1280, 1280]    # [256, 256]
+>> line 5: SIZE_TEST: [1280, 1280]    # [256, 256]
+>> line 25: IMS_PER_BATCH: 1    # 256
+>> line 34: IMS_PER_BATCH: 1280    # 256
+```
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
+```
+
+The training results are stored by default in `logs/AICUP/bagtricks_R50-ibn`. 
+
+The storage location and model hyperparameters can be modified in `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`.
+
+You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyperparameters can be modified.
+
+</details>
 
 
 ### Acknowledgements
 
-- [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT)
+- [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT) ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))
 - [Official YOLOv9](https://github.com/WongKinYiu/yolov9)
 
 

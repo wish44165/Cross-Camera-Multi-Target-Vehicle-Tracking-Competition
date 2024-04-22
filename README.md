@@ -250,10 +250,10 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 
 `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
 ```
->> line 4: SIZE_TRAIN: [1280, 1280]    # [256, 256]
->> line 5: SIZE_TEST: [1280, 1280]    # [256, 256]
->> line 25: IMS_PER_BATCH: 1    # 256
->> line 34: IMS_PER_BATCH: 1280    # 256
+>> line 4: SIZE_TRAIN: [960, 960]    # [256, 256]
+>> line 5: SIZE_TEST: [960, 960]    # [256, 256]
+>> line 25: IMS_PER_BATCH: 4    # 256
+>> line 34: IMS_PER_BATCH: 960    # 256
 ```
 
 ```bash

@@ -172,6 +172,33 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 ---
 
 
+<details><summary>YOLOv8</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ conda activate botsort
+$ pip install ultralytics
+
+# train
+$ 
+$
+
+# Tracking and creating the submission file for AICUP
+$ bash tools/track_all_timestamps_v8.sh --weights ./yolov8/runs/train/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+
+# Evaluate your submission
+$ cp 09*/*.txt tracking_results/
+$ cp 10*/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/tracking_results
+```
+
+</details>
+
+
+---
+
+
 <details><summary>Fine-tune YOLOv9 for AICUP</summary>
 
 ```bash

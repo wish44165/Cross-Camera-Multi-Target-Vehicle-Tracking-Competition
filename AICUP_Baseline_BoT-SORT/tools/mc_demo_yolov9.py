@@ -93,6 +93,7 @@ def detect(save_img=False):
     seen, windows, dt = 0, [], (Profile(), Profile(), Profile())
     #for path, img, im0s, vid_cap, s in dataset:
     for path, img, im0s, vid_cap, s in tqdm(dataset, desc=f'tracking {opt.name}'):
+        frameID += 1
         with dt[0]:
             img = torch.from_numpy(img).to(model.device)
             img = img.half() if model.fp16 else img.float()  # uint8 to fp16/32

@@ -12,6 +12,18 @@ AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking C
 </details>
 
 
+<details>
+
+<summary>Progress</summary>
+
+- [ ] Change loss function for ReID module
+- [x] 22/04/2024 - Evaluate on YOLOv8 and YOLOv9-E and train ReID with Imgsz=960 (22/04/2024 - )
+- [x] 17/04/2024 - Evaluate on YOLOv7-E6E and train YOLOv9-E (17/04/2024 - 22/04/2024)
+- [x] 14/04/2024 - Setup and Train YOLOv7-E6E with ReID (14/04/2024 - 16/04/2024)
+  
+</details>
+
+
 <details><summary>Create Conda Environment</summary>
 
 ```bash
@@ -175,7 +187,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
-<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v7-e6e.png" alt="YOLOv7-E6E" width="70%" >
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v7-e6e.png" alt="YOLOv7-E6E" width="80%" >
 
 
 
@@ -204,7 +216,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
-<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v8.png" alt="YOLOv8" width="70%" >
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v8.png" alt="YOLOv8" width="80%" >
 
 
 
@@ -240,7 +252,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
-<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e.png" alt="YOLOv9-E" width="70%" >
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e.png" alt="YOLOv9-E" width="80%" >
 
 
 ---
@@ -273,7 +285,10 @@ You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyper
 
 ### Acknowledgements
 
-- [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT) ([Legacy](https://github.com/ricky-696/AICup_MCMOT_Baseline))
+- [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT) ([Prev](https://github.com/ricky-696/AICup_MCMOT_Baseline))
+- [Official BoT-SORT](https://github.com/NirAharon/BoT-SORT)
+- [Official YOLOv7](https://github.com/WongKinYiu/yolov7)
+- [Official YOLOv8](https://github.com/ultralytics/ultralytics)
 - [Official YOLOv9](https://github.com/WongKinYiu/yolov9)
 
 

@@ -299,6 +299,39 @@ You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyper
 </details>
 
 
+---
+
+
+<details><summary>Train the ReID Module for AICUP</summary>
+
+`fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
+```bash
+>> line 4: SIZE_TRAIN: [704, 704]    # [256, 256]
+>> line 5: SIZE_TEST: [704, 704]    # [256, 256]
+>> line 25: IMS_PER_BATCH: 8    # 256
+>> line 34: IMS_PER_BATCH: 704    # 256
+```
+
+`fast_reid/configs/Base-bagtricks.yml`
+```bash
+>> line 22: NAME: ("CrossEntropyLoss", "CircleLoss",)    # ("CrossEntropyLoss", "TripletLoss",)
+```
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
+```
+
+The training results are stored by default in `logs/AICUP/bagtricks_R50-ibn`. 
+
+The storage location and model hyperparameters can be modified in `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`.
+
+You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyperparameters can be modified.
+
+</details>
+
+
 ### Acknowledgements
 
 - [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT) ([Prev](https://github.com/ricky-696/AICup_MCMOT_Baseline))

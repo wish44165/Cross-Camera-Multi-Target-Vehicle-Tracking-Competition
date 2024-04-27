@@ -3,7 +3,7 @@
 AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking Competition – Model Development Session
 
 
-<summary>Progress</summary>
+<details><summary>Progress</summary>
 
 - [ ] 27/04/2024 - Change loss function for ReID module
 - [x] 22/04/2024 - Evaluate on YOLOv8 and YOLOv9-E and train ReID with Imgsz=960 (weird results)
@@ -20,9 +20,6 @@ AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking C
 - RAM: 48087MiB
 
 </details>
-
-
-<details>
 
 
 <details><summary>Create Conda Environment</summary>

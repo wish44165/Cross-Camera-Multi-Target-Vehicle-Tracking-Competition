@@ -3,6 +3,16 @@
 AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking Competition – Model Development Session
 
 
+<summary>Progress</summary>
+
+- [ ] 27/04/2024 - Change loss function for ReID module
+- [x] 22/04/2024 - Evaluate on YOLOv8 and YOLOv9-E and train ReID with Imgsz=960 (weird results)
+- [x] 17/04/2024 - Evaluate on YOLOv7-E6E and train YOLOv9-E (17/04/2024 - 22/04/2024)
+- [x] 14/04/2024 - Setup and Train YOLOv7-E6E with ReID (14/04/2024 - 16/04/2024)
+  
+</details>
+
+
 <details><summary>Hardware Information</summary>
 
 - CPU: AMD Ryzen 5 5600X 6-Core @ 12x 3.7GHz
@@ -13,15 +23,6 @@ AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking C
 
 
 <details>
-
-<summary>Progress</summary>
-
-- [ ] Change loss function for ReID module
-- [x] 22/04/2024 - Evaluate on YOLOv8 and YOLOv9-E and train ReID with Imgsz=960 (22/04/2024 - )
-- [x] 17/04/2024 - Evaluate on YOLOv7-E6E and train YOLOv9-E (17/04/2024 - 22/04/2024)
-- [x] 14/04/2024 - Setup and Train YOLOv7-E6E with ReID (14/04/2024 - 16/04/2024)
-  
-</details>
 
 
 <details><summary>Create Conda Environment</summary>
@@ -253,6 +254,24 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 
 
 <img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e.png" alt="YOLOv9-E" width="80%" >
+
+<details><summary>YOLOv9 with circle loss</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+# Tracking and creating the submission file for AICUP
+$ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0048.pth
+
+# Evaluate your submission
+$ cp 09*/*.txt tracking_results/
+$ cp 10*/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_circleloss/tracking_results/
+```
+
+</details>
+
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e_circleLoss.png" alt="YOLOv9-E with circle loss" width="80%" >
 
 
 ---

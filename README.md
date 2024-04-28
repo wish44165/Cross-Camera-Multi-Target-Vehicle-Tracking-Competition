@@ -358,7 +358,7 @@ $ python data_aug.py
 $ cd AICUP_Baseline_BoT-SORT/yolov9/
 
 # train
-$ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml --img 1920 --cfg models/detect/yolov9-e.yaml --weights './yolov9-e-converted' --name yolov9-e --hyp hyp.scratch-high.yaml --min-items 0 --epochs 60 --close-mosaic 10
+$ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml --img 1280 --cfg models/detect/yolov9-e.yaml --weights './yolov9-e-converted' --name yolov9-e --hyp hyp.scratch-high.yaml --min-items 0 --epochs 60 --close-mosaic 10
 
 ################################################################
 # Tracking and creating the submission file for AICUP

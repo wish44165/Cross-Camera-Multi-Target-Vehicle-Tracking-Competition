@@ -302,7 +302,7 @@ You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyper
 ---
 
 
-<details><summary>Train the ReID Module for AICUP (imgsz=704)</summary>
+<details><summary>Train the ReID Module for AICUP (imgsz=704, w/ circleLoss)</summary>
 
 `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
 ```bash
@@ -328,14 +328,8 @@ $ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AIC
 # Evaluate your submission
 $ cp 09*/*.txt tracking_results/
 $ cp 10*/*.txt tracking_results/
-$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_circleloss/tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_704_circleLoss/tracking_results/
 ```
-
-The training results are stored by default in `logs/AICUP/bagtricks_R50-ibn`. 
-
-The storage location and model hyperparameters can be modified in `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`.
-
-You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyperparameters can be modified.
 
 </details>
 

@@ -274,7 +274,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 ---
 
 
-<details><summary>Train the ReID Module for AICUP</summary>
+<details><summary>Train the ReID Module for AICUP (imgsz=960: weird results)</summary>
 
 `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
 ```
@@ -302,7 +302,7 @@ You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyper
 ---
 
 
-<details><summary>Train the ReID Module for AICUP</summary>
+<details><summary>Train the ReID Module for AICUP (imgsz=704)</summary>
 
 `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
 ```bash
@@ -321,6 +321,14 @@ You can refer to `fast_reid/fastreid/config/defaults.py` to find out which hyper
 $ cd AICUP_Baseline_BoT-SORT/
 
 $ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
+
+# Tracking and creating the submission file for AICUP
+$ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_704_circleLoss/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_704_circleLoss/model_0058.pth
+
+# Evaluate your submission
+$ cp 09*/*.txt tracking_results/
+$ cp 10*/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_circleloss/tracking_results/
 ```
 
 The training results are stored by default in `logs/AICUP/bagtricks_R50-ibn`. 

@@ -337,12 +337,14 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 ---
 
 
-<details><summary>YOLOv9 with circle loss</summary>
+<details><summary>Data augmentation</summary>
+
+- original: train:val = 23307:8640
 
 ```bash
 $ cd AICUP_Baseline_BoT-SORT/
 $ git clone https://github.com/Paperspace/DataAugmentationForObjectDetection.git
-
+$ python data_aug.py
 ```
 
 </details>

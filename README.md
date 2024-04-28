@@ -339,13 +339,15 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 
 <details><summary>Data augmentation</summary>
 
-- original: train:val = 23307:8640
+- original: train:val = 23307:8640 (0.3707040803192174)
 
 ```bash
 $ cd AICUP_Baseline_BoT-SORT/
 $ git clone https://github.com/Paperspace/DataAugmentationForObjectDetection.git
 $ python data_aug.py
 ```
+
+- train:val = 39240:14032 (0.35759429153924566)
 
 </details>
 

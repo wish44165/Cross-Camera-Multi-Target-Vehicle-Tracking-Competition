@@ -225,7 +225,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 $ cd AICUP_Baseline_BoT-SORT/
 
 $ git clone https://github.com/WongKinYiu/yolov9.git
-$ cd /yolov9
+$ cd yolov9/
 $ pip install seaborn thop
 $ pip install ipython
 $ pip install psutil
@@ -348,6 +348,27 @@ $ python data_aug.py
 ```
 
 - train:val = 39240:14032 (0.35759429153924566)
+
+</details>
+
+
+<details><summary>YOLOv9</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/yolov9/
+
+# train
+$ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml --img 1920 --cfg models/detect/yolov9-e.yaml --weights './yolov9-e-converted' --name yolov9-e --hyp hyp.scratch-high.yaml --min-items 0 --epochs 60 --close-mosaic 10
+
+################################################################
+# Tracking and creating the submission file for AICUP
+$ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+
+# Evaluate your submission
+$ cp 09*/*.txt tracking_results/
+$ cp 10*/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/tracking_results
+```
 
 </details>
 

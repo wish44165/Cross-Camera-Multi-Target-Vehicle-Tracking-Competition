@@ -357,8 +357,10 @@ $ python data_aug.py
 ```bash
 $ cd AICUP_Baseline_BoT-SORT/yolov9/
 
+$ wget https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e.pt
+
 # train
-$ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml --img 1280 --cfg models/detect/yolov9-e.yaml --weights './yolov9-e-converted' --name yolov9-e --hyp hyp.scratch-high.yaml --min-items 0 --epochs 60 --close-mosaic 10
+$ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml --img 1280 --cfg models/detect/yolov9-e.yaml --weights ./yolov9-e.pt --name yolov9-e --hyp hyp.scratch-high.yaml --min-items 0 --epochs 60 --close-mosaic 10
 
 ################################################################
 # Tracking and creating the submission file for AICUP
@@ -383,6 +385,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 - [Official YOLOv7](https://github.com/WongKinYiu/yolov7)
 - [Official YOLOv8](https://github.com/ultralytics/ultralytics)
 - [Official YOLOv9](https://github.com/WongKinYiu/yolov9)
+- [Data Augmentation For Object Detection](https://github.com/Paperspace/DataAugmentationForObjectDetection)
 
 
 ### References
@@ -392,3 +395,6 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 
 ### v9
 - [train.py tran_dual.py train_triple.py The relationship and difference between the three #1](https://github.com/WongKinYiu/yolov9/issues/1)
+- [What's the difference between yolov9-c-converted.pt and gelan-c.pt? #131](https://github.com/WongKinYiu/yolov9/issues/131)
+- [Converted version, e and c and gelan? #209](https://github.com/WongKinYiu/yolov9/issues/209#issuecomment-1988427005)
+- [Hello, what is the difference between yolov9-c-converted and yolov9-c? #326](https://github.com/WongKinYiu/yolov9/issues/326)

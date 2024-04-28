@@ -334,6 +334,23 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 <img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e_704_circleLoss.png" alt="YOLOv9-E with circle loss" width="80%" >
 
 
+---
+
+
+<details><summary>YOLOv9 with circle loss</summary>
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+$ git clone https://github.com/Paperspace/DataAugmentationForObjectDetection.git
+
+```
+
+</details>
+
+
+---
+
+
 ### Acknowledgements
 
 - [AICUP Baseline: BoT-SORT](https://github.com/ricky-696/AICUP_Baseline_BoT-SORT) ([Prev](https://github.com/ricky-696/AICup_MCMOT_Baseline))

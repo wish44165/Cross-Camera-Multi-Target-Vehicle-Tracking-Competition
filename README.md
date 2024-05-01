@@ -334,7 +334,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 <img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e_704_circleLoss.png" alt="YOLOv9-E with circle loss" width="80%" >
 
 
-<details><summary>Train the ReID Module for AICUP (imgsz=256, w/ IBN, SE, NL, BNneck, EMA, CircleLoss)</summary>
+<details><summary>Train the ReID Module for AICUP (imgsz=256, w/ IBN, NL, BNneck, EMA, CircleLoss)</summary>
 
 `fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
 ```bash

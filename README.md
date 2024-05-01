@@ -367,6 +367,42 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e_256_v2.png" alt="YOLOv9-E_256_v2 with circle loss" width="80%" >
+
+
+<details><summary>Train the ReID Module for AICUP (imgsz=432, w/ IBN, NL, BNneck, EMA, CircleLoss)</summary>
+
+- output folder: bagtricks_R50-ibn_432/
+
+`fast_reid/configs/AICUP/bagtricks_R50-ibn.yml`
+```bash
+>> line 4: SIZE_TRAIN: [432, 432]    # [256, 256]
+>> line 5: SIZE_TEST: [432, 432]    # [256, 256]
+>> line 25: IMS_PER_BATCH: 48    # 256
+>> line 34: IMS_PER_BATCH: 432    # 256
+```
+
+`fast_reid/configs/Base-bagtricks.yml`
+```bash
+>> line 22: NAME: ("CrossEntropyLoss", "CircleLoss",)    # ("CrossEntropyLoss", "TripletLoss",)
+```
+
+```bash
+$ cd AICUP_Baseline_BoT-SORT/
+
+$ python3 fast_reid/tools/train_net.py --config-file fast_reid/configs/AICUP/bagtricks_R50-ibn.yml MODEL.DEVICE "cuda:0"
+
+# Tracking and creating the submission file for AICUP
+$ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_256_v2/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_256_v2/model_0058.pth
+
+# Evaluate your submission
+$ cp *00/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_256_v2/tracking_results/
+```
+
+</details>
+
+
 ---
 
 

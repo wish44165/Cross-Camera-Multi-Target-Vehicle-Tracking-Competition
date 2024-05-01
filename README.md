@@ -352,7 +352,7 @@ $ python data_aug.py
 </details>
 
 
-<details><summary>YOLOv9</summary>
+<details><summary>YOLOv9 (e2)</summary>
 
 ```bash
 $ cd AICUP_Baseline_BoT-SORT/yolov9/
@@ -366,9 +366,8 @@ $ python train_dual.py --workers 8 --device 0 --batch 1 --data data/AICUP.yaml -
 $ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e2/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_circleLoss/model_0048.pth
 
 # Evaluate your submission
-$ cp 09*/*.txt tracking_results/
-$ cp 10*/*.txt tracking_results/
-$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/tracking_results
+$ cp *00/*.txt tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e2_circleLoss/tracking_results/
 ```
 
 </details>

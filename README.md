@@ -359,10 +359,13 @@ $ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AIC
 
 # Evaluate your submission
 $ cp *00/*.txt tracking_results/
-$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_704_circleLoss/tracking_results/
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v9-e_224/tracking_results/
 ```
 
 </details>
+
+
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e_224.png" alt="YOLOv9-E 224 with circle loss" width="80%" >
 
 
 <details><summary>Train the ReID Module for AICUP (imgsz=256, w/ IBN, NL, BNneck, EMA, CircleLoss)</summary>

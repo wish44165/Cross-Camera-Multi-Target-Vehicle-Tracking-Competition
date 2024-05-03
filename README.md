@@ -480,7 +480,7 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 ```bash
 >> line 4: SIZE_TRAIN: [160, 160]    # [256, 256]
 >> line 5: SIZE_TEST: [160, 160]    # [256, 256]
->> line 25: IMS_PER_BATCH: 96    # 256
+>> line 25: IMS_PER_BATCH: 128    # 256
 >> line 34: IMS_PER_BATCH: 160    # 256
 ```
 

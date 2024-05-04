@@ -505,6 +505,9 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v9-e_160.png" alt="YOLOv9-E 160 with circle loss" width="80%" >
+
+
 ---
 
 

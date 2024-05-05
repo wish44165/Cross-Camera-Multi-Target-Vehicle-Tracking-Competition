@@ -217,9 +217,13 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 </details>
 
 
+#### YOLOv8 with default ReID training
+
 <img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v8.png" alt="YOLOv8" width="80%" >
 
+#### YOLOv8x with ReID imgsz=128 and CircleLoss training
 
+<img src="https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/assets/v8x_128.png" alt="YOLOv8" width="80%" >
 
 
 <details><summary>YOLOv9</summary>

@@ -206,11 +206,10 @@ $ wget https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8x.pt
 $ python train.py
 
 # Tracking and creating the submission file for AICUP
-$ bash tools/track_all_timestamps_v8.sh --weights ./yolov8/runs/train/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config "fast_reid/configs/AICUP/bagtricks_R50-ibn.yml" --fast-reid-weights logs/AICUP_115/bagtricks_R50-ibn/model_0058.pth
+$ bash tools/track_all_timestamps_v8.sh --weights ./ultralytics/runs/detect/train/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/datasets/train/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_128/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_128/model_0058.pth
 
 # Evaluate your submission
-$ cp 09*/*.txt tracking_results/
-$ cp 10*/*.txt tracking_results/
+$ cp *00/*.txt tracking_results/
 $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/tracking_results
 ```
 

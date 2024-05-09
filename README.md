@@ -210,7 +210,7 @@ $ bash tools/track_all_timestamps_v8.sh --weights ./ultralytics/runs/detect/trai
 
 # Evaluate your submission
 $ cp *00/*.txt tracking_results/
-$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/tracking_results
+$ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --ts_dir /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/runs/detect/v8x_128/tracking_results/
 ```
 
 </details>

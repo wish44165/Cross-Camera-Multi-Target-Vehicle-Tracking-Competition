@@ -667,8 +667,17 @@ $ cd runs/detect/
 $ cp 09*/*.txt 2nd/
 $ cp 10*/*.txt 2nd/
 
-# yolov9 (e2) 256_v2
+# yolov9_e2 256_v2 (0.824332)
 $ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e2/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/32_33_AI_CUP_testdataset/AI_CUP_testdata/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_256_v2/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_256_v2/model_0058.pth
+$ cd runs/detect/
+$ cp 09*/*.txt 3rd/
+$ cp 10*/*.txt 3rd/
+
+# yolov9_e2 128
+$ bash tools/track_all_timestamps_v9.sh --weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/yolov9/runs/train/yolov9-e2/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/32_33_AI_CUP_testdataset/AI_CUP_testdata/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_128/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_128/model_0058.pth
+$ cd runs/detect/
+$ cp 09*/*.txt 4th/
+$ cp 10*/*.txt 4th/
 ```
 
 

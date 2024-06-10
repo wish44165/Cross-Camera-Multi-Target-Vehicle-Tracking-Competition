@@ -5,8 +5,8 @@ AI-Driven Future of Transportation: Cross-Camera Multi-Target Vehicle Tracking C
 
 <details><summary>Progress</summary>
 
-- [ ] 28/05/2024 - Inference for test data
-- [x] 27/04/2024 - Change loss function for ReID module
+- [x] 28/05/2024 - Inference on test data (AI_CUP_testdata/)
+- [x] 27/04/2024 - Change loss function for ReID module (Triplet to Circle)
 - [x] 22/04/2024 - Evaluate on YOLOv8 and YOLOv9-E and train ReID with Imgsz=960 (weird results)
 - [x] 17/04/2024 - Evaluate on YOLOv7-E6E and train YOLOv9-E (17/04/2024 - 22/04/2024)
 - [x] 14/04/2024 - Setup and Train YOLOv7-E6E with ReID (14/04/2024 - 16/04/2024)
@@ -660,6 +660,11 @@ $ python tools/evaluate.py --gt_dir /home/wish/pro/AICUP/MCMOT/datasets_MOT15 --
 
 ---
 
+
+<details><summary>Inference</summary>
+
+- [inference.ipynb](https://github.com/wish44165/Cross-Camera-Multi-Target-Vehicle-Tracking-Competition/blob/main/inference.ipynb)
+
 ```bash
 # yolov8 128 (0.828468)
 $ bash tools/track_all_timestamps_v8.sh --weights ./ultralytics/runs/detect/train/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/32_33_AI_CUP_testdataset/AI_CUP_testdata/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_128/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_128/model_0058.pth
@@ -679,13 +684,14 @@ $ cd runs/detect/
 $ cp 09*/*.txt 5th/
 $ cp 10*/*.txt 5th/
 
-# yolov8 256_v2 ()
+# yolov8 256_v2 (public: 0.828977 - 23rd	/ private: 0.945747088 - 18th)
 $ bash tools/track_all_timestamps_v8.sh --weights ./ultralytics/runs/detect/train/weights/best.pt --source-dir /home/wish/pro/AICUP/MCMOT/32_33_AI_CUP_testdataset/AI_CUP_testdata/images --device "0" --fast-reid-config /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_256_v2/config.yaml --fast-reid-weights /home/wish/pro/AICUP/MCMOT/AICUP_Baseline_BoT-SORT/logs/AICUP_115/bagtricks_R50-ibn_256_v2/model_0058.pth
 $ cd runs/detect/
 $ cp 09*/*.txt 6th/
 $ cp 10*/*.txt 6th/
 ```
 
+</details>
 
 
 ---
